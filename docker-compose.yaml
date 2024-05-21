@@ -1,0 +1,49 @@
+# specificarea versiunii este obsolate
+
+# definim serviciile de care avem nevoie pentru stiva lAMP
+services:
+
+  apache:
+    depends_on:
+      - php
+    build:
+      context: ./docker_services/
+      dockerfile: apache.dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src/:/var/www/html
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /var/www/html
+
+  php:
+    build:
+      context: ./docker_services/
+      dockerfile: php.dockerfile
+    volumes:
+      - ./src/:/var/www/html
+
+
+  mariadb:
+    image: mariadb:10.11
+    volumes:
+      - mysqldata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD:-rootpass123}
+    
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 48080:80
+    environment:
+      PMA_HOST: mariadb
+    depends_on:
+      - mariadb
+
+
+volumes:
+  mysqldata: 
