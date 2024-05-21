@@ -63,5 +63,5 @@ http://localhost:8080
 
 * Accesare phpMyAdmin
 ```
-http://localhost:803309 ? (portul nu este valid!!!)
+http://localhost:48080
 ```
