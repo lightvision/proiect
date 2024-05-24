@@ -19,6 +19,10 @@ services:
           path: ./src
           target: /var/www/html
 
+        - action: sync+restart
+          path: ./docker_services/apache-vhost.conf
+          target: /usr/local/apache2/conf/apache-vhost.conf
+
   php:
     build:
       context: ./docker_services/

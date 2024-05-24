@@ -40,6 +40,7 @@ Accesul la baza de date se va face cu ajutorul PHPMyAdmin.
 - Ar fi dragut sa includem si un SSL generat, insa pentru acest lucru ar trebui folosit un nume de domeniu sau SSL-ul ar trebui sa fie Self Signed.
 - docker-compose.yaml trebuie sa porneasca si un serviciul de watch pentru ca sa vad modificarile in timp real.
 - serviciul de watch ar trebui sa fie doar atunci cand suntem in partea de development.
+- fiecare fisier *.yaml aferent docker trebuie sa aiba sfatsitul de rand pentru *nix, adica LF si nu CRLF.
 
 # Rularea aplicatiei
 Asigurarea serviciilor necesare rularii aplicatiei se face cu ajutorul comenzii de mai jos.
